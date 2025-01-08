@@ -1,0 +1,7 @@
+<suite name="Cucumber TestNG Suite">
+    <test name="Cucumber Scenarios">
+        <classes>
+            <class name="ge.automation.runner.TestRunner"/>
+        </classes>
+    </test>
+</suite>
