@@ -19,7 +19,7 @@ Scenario Outline: Successful login and add product to cart
   Examples:
     |username|password|product|
     |standard_user|secret_sauce|Sauce Labs Backpack|
-    |problem_user |secret_sauce|Sauce Labs Bike Light|
+    |visual_user |secret_sauce|Sauce Labs Bolt T-Shirt|
 
 
 

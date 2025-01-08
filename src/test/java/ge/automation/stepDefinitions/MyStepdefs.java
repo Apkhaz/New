@@ -1,41 +1,23 @@
 package ge.automation.stepDefinitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import ge.automation.driver.DriverManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
-import java.time.Duration;
 
 
 public class MyStepdefs {
 
     WebDriver driver;
-    WebDriverWait wait;
 
-    @Before
-    public void setup() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
-
-    @After
-    public void teardown(){
-        driver.quit();
-    }
+public MyStepdefs(){
+    driver = DriverManager.getDriver();
+}
 
     @Given("browser is launched and {string} page open")
     public void browserIsLaunchedAndPageOpen(String baseUrl) {
@@ -45,16 +27,11 @@ public class MyStepdefs {
     @When("user enters valid username {string} and password {string}")
     public void userEntersValidUsernameAndPassword(String username, String password) {
 
-       // wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
-
         WebElement usernameEl = driver.findElement(By.id("user-name"));
+        WebElement passwordEl = driver.findElement(By.id("password"));
 
        usernameEl.clear();
        usernameEl.sendKeys(username);
-
-       // wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password")));
-
-        WebElement passwordEl = driver.findElement(By.id("password"));
        passwordEl.clear();
        passwordEl.sendKeys(password);
     }
